@@ -35,7 +35,12 @@
                                     <div class="card-body p-4">
                                         <h3 class="card-title">{{ $gd_name }}</h3>
                                         <h6>
-                                            <small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $in_stock }}</small>
+                                            <small class="text-muted">
+                                                {{__('goods.fields.in_stock')}}：{{ $in_stock }}
+                                                @if(app('Service\OrderService')->pendingOrders($id) > 0)
+                                                    ({{ app('Service\OrderService')->pendingOrders($id) }} {{__('goods.fields.stock_lock')}})
+                                                @endif
+                                            </small>
                                         </h6>
                                         @if($buy_limit_num > 0)
                                             <h6>

@@ -126,6 +126,7 @@ return [
         'new_order_push' => '新訂單通知',
         'loop_carmis_limit' => '此商品最多購買一件！',
         'have_pending_order' => '您有未完成的訂單，請完成支付或等待訂單過期後下單：',
+        'stock_lock' => '有其他客戶正在支付此商品，請稍後回來查看是否還有庫存',
     ],
 
     'equipment' => [

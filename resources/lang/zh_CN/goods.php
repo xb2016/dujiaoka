@@ -15,6 +15,7 @@ return [
         'gd_description' => '商品描述',
         'gd_keywords' => '商品关键字',
         'in_stock' => '库存',
+        'stock_lock' => '已锁定',
         'ord' => '排序权重',
         'other_ipu_cnf' => '其他输入框配置',
         'picture' => '商品图片',

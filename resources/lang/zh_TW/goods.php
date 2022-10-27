@@ -15,6 +15,7 @@ return [
         'gd_description' => '商品描述',
         'gd_keywords' => '商品關鍵字',
         'in_stock' => '庫存',
+        'stock_lock' => '已鎖定',
         'ord' => '排序權重',
         'other_ipu_cnf' => '其他輸入框配置',
         'picture' => '商品圖片',

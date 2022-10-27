@@ -132,6 +132,10 @@ class OrderService
         if ($goods->payment_limit && !in_array($request->input('payway'), explode(',', $goods->payment_limit))) {
             throw new RuleValidationException(__('dujiaoka.prompt.server_illegal_request'));
         }
+        // 库存锁
+        if ($request->input('by_amount') > ($goods->in_stock - $this->pendingOrders($goods->id))) {
+            throw new RuleValidationException(__('dujiaoka.prompt.stock_lock'));
+        }
         return $goods;
     }
     
@@ -303,5 +307,28 @@ class OrderService
             ->orderBy('created_at', 'DESC')
             ->take(5)
             ->get();
+    }
+
+    /**
+     * 获取未支付商品数量
+     *
+     * @param int $id 商品id
+     * @return int
+     *
+     * @author    moedog<web@service.moedog.org>
+     * @copyright moedog<web@service.moedog.org>
+     * @link      https://moedog.org/
+     */
+    public function pendingOrders(int $id): int
+    {
+        $count = 0;
+        $orders = Order::query()
+            ->where('status', Order::STATUS_WAIT_PAY)
+            ->where('goods_id', $id)
+            ->get();
+        foreach ($orders as $order) {
+            $count += $order->buy_amount;
+        }
+        return $count;
     }
 }
