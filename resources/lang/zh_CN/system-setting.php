@@ -45,6 +45,7 @@ return [
         'template' => '站点模板',
         'language' => '站点语言',
         'order_expire_time' => '订单过期时间(分钟)',
+        'pending_order_limit' => '未支付订单数量限制',
 
         'driver' => '邮件驱动',
         'host' => 'smtp服务器地址',

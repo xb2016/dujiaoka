@@ -45,6 +45,7 @@ return [
         'template' => '站點模板',
         'language' => '站點語言',
         'order_expire_time' => '訂單逾期時間(分鐘)',
+        'pending_order_limit' => '未支付訂單數量限制',
 
         'driver' => '信箱驅動',
         'host' => 'smtp伺服器地址',

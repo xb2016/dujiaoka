@@ -125,6 +125,7 @@ return [
         'no_related_order_found' => '未找到相關訂單！',
         'new_order_push' => '新訂單通知',
         'loop_carmis_limit' => '此商品最多購買一件！',
+        'have_pending_order' => '您有未完成的訂單，請完成支付或等待訂單過期後下單：',
     ],
 
     'equipment' => [

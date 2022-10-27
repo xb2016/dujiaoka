@@ -43,6 +43,9 @@ class SystemSetting extends Form
             $this->number('order_expire_time', admin_trans('system-setting.fields.order_expire_time'))
                 ->default(5)
                 ->required();
+            $this->number('pending_order_limit', admin_trans('system-setting.fields.pending_order_limit'))
+                ->default(0)
+                ->required();
             $this->switch('is_open_anti_red', admin_trans('system-setting.fields.is_open_anti_red'))
                 ->default(BaseModel::STATUS_CLOSE);
             $this->switch('is_open_img_code', admin_trans('system-setting.fields.is_open_img_code'))

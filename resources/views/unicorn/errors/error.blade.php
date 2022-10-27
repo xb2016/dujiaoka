@@ -15,7 +15,7 @@
                                     </h6>
                                     <div class="err-message text-center p-3">
                                         <h5>
-                                            {{ $content }}
+                                            {!! $content !!}
                                         </h5>
                                     </div>
                                     <div class="col-12 mt-3 text-center">

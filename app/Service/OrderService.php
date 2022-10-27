@@ -18,6 +18,7 @@ use App\Models\Order;
 use App\Rules\SearchPwd;
 use App\Rules\VerifyImg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
 class OrderService
@@ -83,6 +84,23 @@ class OrderService
 
         ) {
             throw new RuleValidationException(__('dujiaoka.prompt.geetest_validate_fail'));
+        }
+        // 未支付订单数限制
+        $cookies = Cookie::get('dujiaoka_orders');
+        if (!empty($cookies)) {
+            $n = 0;
+            $pending = '';
+            $orderSNS = json_decode($cookies, true);
+            $orders = $this->byOrderSNS($orderSNS);
+            foreach ($orders as $order) {
+                if ($order['status'] == Order::STATUS_WAIT_PAY){
+                    $n += 1;
+                    $pending .= '<br><a href="' . url('/bill', ['orderSN' => $order->order_sn]) . '">' . $order->order_sn . '</a>';
+                }
+            }
+            if (dujiaoka_config_get('pending_order_limit') != 0 && $n >= dujiaoka_config_get('pending_order_limit')) {
+                throw new RuleValidationException(__('dujiaoka.prompt.have_pending_order') . $pending);
+            }
         }
     }
 
