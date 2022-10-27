@@ -103,6 +103,7 @@ class GoodsController extends AdminController
             $show->field('in_stock');
             $show->field('sales_volume');
             $show->field('buy_limit_num');
+            $show->field('payment_limit');
             $show->field('ord');
             $show->field('is_open')->as(function ($isOpen) {
                 if ($isOpen == GoodsGroupModel::STATUS_OPEN) {
@@ -145,6 +146,7 @@ class GoodsController extends AdminController
             $form->number('in_stock')->help(admin_trans('goods.helps.in_stock'));
             $form->number('sales_volume');
             $form->number('buy_limit_num')->help(admin_trans('goods.helps.buy_limit_num'));
+            $form->text('payment_limit')->rules('nullable|regex:/^([0-9]{1,2},)*[0-9]{1,2}$/')->help(admin_trans('goods.helps.payment_limit'));
             $form->editor('buy_prompt');
             $form->editor('description');
             $form->textarea('other_ipu_cnf')->help(admin_trans('goods.helps.other_ipu_cnf'));

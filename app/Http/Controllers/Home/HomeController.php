@@ -77,7 +77,14 @@ class HomeController extends BaseController
             if (app('Jenssegers\Agent')->isMobile()) {
                 $client = Pay::PAY_CLIENT_MOBILE;
             }
-            $formatGoods->payways = $this->payService->pays($client);
+            $payways = $this->payService->pays($client);
+            $customPayways = [];
+            if ($formatGoods->payment_limit) {
+                foreach ($payways as $way) {
+                    if (in_array($way['id'], explode(',', $formatGoods->payment_limit))) $customPayways[] = $way;
+                }
+            }
+            $formatGoods->payways = empty($customPayways) ? $payways : $customPayways;
             return $this->render('static_pages/buy', $formatGoods, $formatGoods->gd_name);
         } catch (RuleValidationException $ruleValidationException) {
             return $this->err($ruleValidationException->getMessage());

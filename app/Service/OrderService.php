@@ -110,6 +110,10 @@ class OrderService
         if ($request->input('by_amount') > $goods->in_stock) {
             throw new RuleValidationException(__('dujiaoka.prompt.inventory_shortage'));
         }
+        // 支付方式
+        if ($goods->payment_limit && !in_array($request->input('payway'), explode(',', $goods->payment_limit))) {
+            throw new RuleValidationException(__('dujiaoka.prompt.server_illegal_request'));
+        }
         return $goods;
     }
     

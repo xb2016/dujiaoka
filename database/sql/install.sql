@@ -342,6 +342,7 @@ CREATE TABLE `goods` (
   `sales_volume` int DEFAULT '0' COMMENT '销量',
   `ord` int DEFAULT '1' COMMENT '排序权重 越大越靠前',
   `buy_limit_num` int NOT NULL DEFAULT '0' COMMENT '限制单次购买最大数量，0为不限制',
+  `payment_limit` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '支付方式',
   `buy_prompt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '购买提示',
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '商品描述',
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '商品类型  1自动发货 2人工处理',
