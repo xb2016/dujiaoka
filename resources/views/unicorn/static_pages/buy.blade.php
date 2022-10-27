@@ -9,6 +9,11 @@
                         <div class="card mt-3">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
+                                    @if($in_stock <= 0)
+                                        <div class="badge-soldout">
+                                            <span>SOLD OUT</span>
+                                        </div>
+                                    @endif
                                     <img src="{{ picture_ulr($picture) }}" class="card-img-top p-3" alt="{{ $gd_name }}">
                                     @if($type == \App\Models\Goods::AUTOMATIC_DELIVERY)
                                         <h6>
@@ -127,7 +132,11 @@
                                                         </fieldset>
                                                     </div>
                                                     <div class="col-12 mt-2">
-                                                        <button type="submit" id="submit" class="btn btn-outline-primary">
+                                                        @if ($in_stock > 0)
+                                                            <button type="submit" id="submit" class="btn btn-outline-primary">
+                                                        @else
+                                                            <button type="submit" id="submit" disabled class="btn btn-outline-primary disabled">
+                                                        @endif
                                                             <i class="ali-icon">&#xe7d8;</i>
                                                             {{ __('dujiaoka.order_now') }}
                                                         </button>

@@ -77,6 +77,11 @@
                                                         {{ __('goods.fields.manual_processing') }}
                                                     </span>
                                                 @endif
+                                                @if($goods['in_stock'] <= 0)
+                                                    <div class="badge-soldout">
+                                                        <span>SOLD OUT</span>
+                                                    </div>
+                                                @endif
                                                 <img src="{{ picture_ulr($goods['picture']) }}" class="card-img-top" alt="{{ $goods['gd_name'] }}">
                                                 <div class="card-body">
                                                     <h6 class="card-title text-truncate" title="{{ $goods['gd_name'] }}">
@@ -93,7 +98,11 @@
                                                         </button>
                                                     @endif
                                                     <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
-                                                    <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
+                                                    @if ($goods['in_stock'] > 0)
+                                                        <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-primary disabled fr">
+                                                    @endif
                                                         <i class="ali-icon">&#xe7d8;</i>
                                                         {{ __('dujiaoka.order_now') }}
                                                     </a>
@@ -121,6 +130,11 @@
                                                         {{ __('goods.fields.manual_processing') }}
                                                     </span>
                                                 @endif
+                                                @if($goods['in_stock'] <= 0)
+                                                    <div class="badge-soldout">
+                                                        <span>SOLD OUT</span>
+                                                    </div>
+                                                @endif
                                                 <img src="{{ picture_ulr($goods['picture']) }}" class="card-img-top" alt="{{ $goods['gd_name'] }}">
                                                 <div class="card-body">
                                                     <h6 class="card-title text-truncate" title="{{ $goods['gd_name'] }}">
@@ -137,7 +151,11 @@
                                                         </button>
                                                     @endif
                                                     <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
-                                                    <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
+                                                    @if ($goods['in_stock'] > 0)
+                                                        <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
+                                                    @else
+                                                        <a href="javascript:void(0);" class="btn btn-primary disabled fr">
+                                                    @endif
                                                         <i class="ali-icon">&#xe7d8;</i>
                                                         {{ __('dujiaoka.order_now') }}
                                                     </a>
