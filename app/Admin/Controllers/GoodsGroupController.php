@@ -13,7 +13,6 @@ use App\Models\GoodsGroup as GoodsGroupModel;
 
 class GoodsGroupController extends AdminController
 {
-
     /**
      * Make a grid builder.
      *

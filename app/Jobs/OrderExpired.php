@@ -11,7 +11,6 @@ use Illuminate\Queue\SerializesModels;
 
 class OrderExpired implements ShouldQueue
 {
-
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**

@@ -37,7 +37,6 @@ use Illuminate\Support\Str;
  */
 class OrderProcessService
 {
-
     const PENDING_CACHE_KEY = 'PENDING_ORDERS_LIST';
 
     /**
@@ -136,8 +135,6 @@ class OrderProcessService
     {
         $this->payID = $payID;
     }
-
-
 
     /**
      * 下单ip
@@ -369,7 +366,6 @@ class OrderProcessService
 
     }
 
-
     /**
      * 订单成功方法
      *
@@ -395,16 +391,16 @@ class OrderProcessService
             if ($order->status == Order::STATUS_COMPLETED) {
                 throw new \Exception(__('dujiaoka.prompt.order_status_completed'));
             }
-            $bccomp = bccomp($order->actual_price, $actualPrice, 2);
             // 金额不一致
+            $bccomp = bccomp($order->actual_price, $actualPrice, 2);
             if ($bccomp != 0) {
                 throw new \Exception(__('dujiaoka.prompt.order_inconsistent_amounts'));
             }
             $order->actual_price = $actualPrice;
             $order->trade_no = $tradeNo;
             // 区分订单类型
-            // 自动发货
             if ($order->type == Order::AUTOMATIC_DELIVERY) {
+                // 自动发货
                 $completedOrder = $this->processAuto($order);
             } else {
                 $completedOrder = $this->processManual($order);
@@ -459,7 +455,7 @@ class OrderProcessService
         $mailData = [
             'created_at' => $order->create_at,
             'product_name' => $order->goods->gd_name,
-            'webname' => dujiaoka_config_get('text_logo', '独角数卡'),
+            'webname' => dujiaoka_config_get('text_logo', config('app.name')),
             'weburl' => config('app.url') ?? 'http://dujiaoka.com',
             'ord_info' => str_replace(PHP_EOL, '<br/>', $order->info),
             'ord_title' => $order->title,
@@ -508,7 +504,7 @@ class OrderProcessService
         $mailData = [
             'created_at' => $order->create_at,
             'product_name' => $order->goods->gd_name,
-            'webname' => dujiaoka_config_get('text_logo', '独角数卡'),
+            'webname' => dujiaoka_config_get('text_logo', config('app.name')),
             'weburl' => config('app.url') ?? 'http://dujiaoka.com',
             'ord_info' => implode('<br/>', $carmisInfo),
             'ord_title' => $order->title,
@@ -522,5 +518,4 @@ class OrderProcessService
         MailSend::dispatch($order->email, $mailBody['tpl_name'], $mailBody['tpl_content']);
         return $order;
     }
-
 }

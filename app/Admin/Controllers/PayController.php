@@ -13,8 +13,6 @@ use App\Models\Pay as PayModel;
 
 class PayController extends AdminController
 {
-
-
     /**
      * Make a grid builder.
      *

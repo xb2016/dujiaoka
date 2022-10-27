@@ -9,13 +9,11 @@
 
 namespace App\Admin\Actions\Post;
 
-
 use Dcat\Admin\Grid\BatchAction;
 use Illuminate\Http\Request;
 
 class BatchRestore extends BatchAction
 {
-
     protected $title;
 
     protected $model;
@@ -49,5 +47,4 @@ class BatchRestore extends BatchAction
             'model' => $this->model,
         ];
     }
-
 }

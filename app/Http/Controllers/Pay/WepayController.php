@@ -1,6 +1,6 @@
 <?php
-namespace App\Http\Controllers\Pay;
 
+namespace App\Http\Controllers\Pay;
 
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
@@ -8,7 +8,6 @@ use Yansongda\Pay\Pay;
 
 class WepayController extends PayController
 {
-
     public function gateway(string $payway, string $orderSN)
     {
         try {
@@ -82,5 +81,4 @@ class WepayController extends PayController
             return 'fail';
         }
     }
-
 }

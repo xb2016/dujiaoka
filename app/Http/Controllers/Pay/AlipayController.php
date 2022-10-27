@@ -9,7 +9,6 @@ use Yansongda\Pay\Pay;
 
 class AlipayController extends PayController
 {
-
     /**
      * 支付宝支付网关
      *
@@ -37,10 +36,10 @@ class AlipayController extends PayController
                 'total_amount' => (float)$this->order->actual_price,
                 'subject' => $this->order->order_sn
             ];
-            switch ($payway){
+            switch ($payway) {
                 case 'zfbf2f':
                 case 'alipayscan':
-                    try{
+                    try {
                         $result = Pay::alipay($config)->scan($order)->toArray();
                         $result['payname'] = $this->order->order_sn;
                         $result['actual_price'] = (float)$this->order->actual_price;
@@ -51,7 +50,7 @@ class AlipayController extends PayController
                         return $this->err(__('dujiaoka.prompt.abnormal_payment_channel') . $e->getMessage());
                     }
                 case 'aliweb':
-                    try{
+                    try {
                         $result = Pay::alipay($config)->web($order);
                         return $result;
                     } catch (\Exception $e) {
@@ -62,7 +61,6 @@ class AlipayController extends PayController
             return $this->err($exception->getMessage());
         }
     }
-
 
     /**
      * 异步通知
@@ -95,7 +93,4 @@ class AlipayController extends PayController
             return 'fail';
         }
     }
-
-
-
 }

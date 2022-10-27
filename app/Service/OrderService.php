@@ -9,7 +9,6 @@
 
 namespace App\Service;
 
-
 use App\Exceptions\RuleValidationException;
 use App\Models\BaseModel;
 use App\Models\Coupon;
@@ -23,13 +22,11 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderService
 {
-
     /**
      * 商品服务层.
      * @var \App\Service\PayService
      */
     private $goodsService;
-
 
     /**
      * 优惠码服务层
@@ -42,7 +39,6 @@ class OrderService
         $this->goodsService = app('Service\GoodsService');
         $this->couponService = app('Service\CouponService');
     }
-
 
     /**
      * 验证集合
@@ -116,7 +112,7 @@ class OrderService
         }
         return $goods;
     }
-	
+    
     /**
      * 判断是否有循环卡密
      *
@@ -135,9 +131,9 @@ class OrderService
             ->where('is_loop', true)
             ->count();
         if($carmis > 0 && $request->input('by_amount') > 1){
-			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
-		}
-		return $carmis;
+            throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
+        }
+        return $carmis;
     }
 
     /**
@@ -286,5 +282,4 @@ class OrderService
             ->take(5)
             ->get();
     }
-
 }

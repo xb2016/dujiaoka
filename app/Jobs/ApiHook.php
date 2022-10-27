@@ -72,8 +72,6 @@ class ApiHook implements ShouldQueue
             'gd_name' => $goodInfo->gd_name
 
         ];
-
-        
         $opts = [
             'http' => [
                 'method'  => 'POST',

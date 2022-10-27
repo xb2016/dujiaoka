@@ -9,7 +9,6 @@
 
 namespace App\Admin\Charts;
 
-
 use App\Models\Order;
 use Dcat\Admin\Widgets\Metrics\Line;
 use Illuminate\Http\Request;
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class SuccessOrderCard extends Line
 {
-
     /**
      * 初始化卡片内容
      *
@@ -112,5 +110,4 @@ class SuccessOrderCard extends Line
 HTML
         );
     }
-
 }

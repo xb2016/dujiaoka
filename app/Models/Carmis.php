@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Carmis extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'carmis';
@@ -51,5 +50,4 @@ class Carmis extends BaseModel
     {
         return $this->belongsTo(Goods::class, 'goods_id');
     }
-
 }

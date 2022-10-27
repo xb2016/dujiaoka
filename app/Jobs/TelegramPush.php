@@ -10,7 +10,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-
 class TelegramPush implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -61,15 +60,14 @@ class TelegramPush implements ShouldQueue
     {
         $goodInfo = $this->goodsService->detail($this->order->goods_id);
         $formatText = '*'. __('dujiaoka.prompt.new_order_push').'('.$this->order->actual_price.'元)*%0A'
-        . __('order.fields.order_id') .': `'.$this->order->id.'`%0A'
-        . __('order.fields.order_sn') .': `'.$this->order->order_sn.'`%0A'
-        . __('order.fields.pay_id') .': `'.$this->order->pay->pay_name.'`%0A'
-        . __('order.fields.title') .': '.$this->order->title.'%0A'
-        . __('order.fields.actual_price') .': '.$this->order->actual_price.'%0A'
-        . __('order.fields.email') .': `'.$this->order->email.'`%0A'
-        . __('goods.fields.gd_name') .': `'.$goodInfo->gd_name.'`%0A'
-        . __('goods.fields.in_stock') .': `'.$goodInfo->in_stock.'`%0A'
-        . __('order.fields.order_created') .': '.$this->order->created_at;
+            . __('order.fields.order_id') .': `'.$this->order->id.'`%0A'
+            . __('order.fields.order_sn') .': `'.$this->order->order_sn.'`%0A'
+            . __('order.fields.pay_id') .': `'.$this->order->pay->pay_name.'`%0A'
+            . __('order.fields.title') .': `'.$this->order->title.'`%0A'
+            . __('order.fields.actual_price') .': `'.$this->order->actual_price.'`%0A'
+            . __('order.fields.email') .': `'.$this->order->email.'`%0A'
+            . __('goods.fields.in_stock') .': `'.$goodInfo->in_stock.'`%0A'
+            . __('order.fields.order_created') .': '.$this->order->created_at;
         $client = new Client([
             'timeout' => 30,
             'proxy'=> ''

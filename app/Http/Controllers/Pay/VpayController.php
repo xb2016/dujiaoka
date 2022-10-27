@@ -14,8 +14,6 @@ use Illuminate\Http\Request;
 
 class VpayController extends PayController
 {
-
-
     public function gateway(string $payway, string $orderSN)
     {
         try {
@@ -47,7 +45,6 @@ class VpayController extends PayController
             return $this->err($exception->getMessage());
         }
     }
-
 
     public function notifyUrl(Request $request)
     {
@@ -86,5 +83,4 @@ class VpayController extends PayController
         sleep(2);
         return redirect(url('detail-order-sn', ['orderSN' => $oid]));
     }
-
 }

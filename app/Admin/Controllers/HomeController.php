@@ -14,7 +14,6 @@ use Dcat\Admin\Layout\Row;
 
 class HomeController extends Controller
 {
-
     public function index(Content $content)
     {
         return $content

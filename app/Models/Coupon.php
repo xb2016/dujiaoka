@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Coupon extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'coupons';
@@ -45,7 +44,6 @@ class Coupon extends BaseModel
         return $this->belongsToMany(Goods::class, 'coupons_goods', 'coupons_id', 'goods_id');
     }
 
-
     public static function getStatusUseMap()
     {
         return [
@@ -53,6 +51,4 @@ class Coupon extends BaseModel
             self::STATUS_UNUSED => admin_trans('coupon.fields.status_unused'),
         ];
     }
-
-
 }

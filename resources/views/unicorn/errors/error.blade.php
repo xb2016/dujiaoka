@@ -1,5 +1,4 @@
 @extends('unicorn.layouts.default')
-
 @section('content')
     <div class="page-wrapper">
         <!-- main start -->
@@ -10,8 +9,8 @@
                         <div class="col-md-8 col-12">
                             <div class="card m-3 border-0">
                                 <div class="card-body p-4">
-                                    <h3 class="card-title ali-icon">&#xe651; {{ $title }}： </h3>
-                                    <h6>
+                                    <h3 class="card-title text-center ali-icon">&#xe651; {{ $title }}</h3>
+                                    <h6 class="text-center">
                                         <small class="text-muted">似乎遇到了一点问题~</small>
                                     </h6>
                                     <div class="err-message text-center p-3">
@@ -34,5 +33,5 @@
             </div>
         </section>
         <!-- main end -->
-        </div>
+    </div>
 @stop

@@ -9,7 +9,6 @@
 
 namespace App\Admin\Charts;
 
-
 use App\Models\Order;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Widgets\Metrics\Bar;
@@ -19,7 +18,6 @@ use Illuminate\Support\Facades\DB;
 
 class SalesCard extends Bar
 {
-
     /**
      * 初始化卡片内容
      */
@@ -135,5 +133,4 @@ class SalesCard extends Bar
 HTML
         );
     }
-
 }

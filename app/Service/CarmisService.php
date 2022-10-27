@@ -9,12 +9,10 @@
 
 namespace App\Service;
 
-
 use App\Models\Carmis;
 
 class CarmisService
 {
-
     /**
      * 通过商品查询一些数量未使用的卡密
      *
@@ -50,5 +48,4 @@ class CarmisService
     {
         return Carmis::query()->whereIn('id', $ids)->where('is_loop', 0)->update(['status' => Carmis::STATUS_SOLD]);
     }
-
 }

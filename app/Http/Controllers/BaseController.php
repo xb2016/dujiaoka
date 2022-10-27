@@ -11,7 +11,6 @@ namespace App\Http\Controllers;
 
 class BaseController extends Controller
 {
-
     /**
      * 渲染模板
      *
@@ -50,5 +49,4 @@ class BaseController extends Controller
         return view($tplPath, ['title' => __('dujiaoka.error_title'), 'content' => $content, 'url' => $jumpUri])
             ->with('page_title', __('dujiaoka.error_title'));
     }
-
 }

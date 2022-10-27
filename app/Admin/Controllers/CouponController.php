@@ -15,7 +15,6 @@ use App\Models\Coupon as CouponModel;
 
 class CouponController extends AdminController
 {
-
     /**
      * Make a grid builder.
      *

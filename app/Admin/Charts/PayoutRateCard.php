@@ -9,7 +9,6 @@
 
 namespace App\Admin\Charts;
 
-
 use App\Models\Order;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Widgets\Metrics\Donut;
@@ -18,7 +17,6 @@ use Illuminate\Support\Carbon;
 
 class PayoutRateCard extends Donut
 {
-
     protected $labels;
 
     /**
@@ -133,5 +131,4 @@ class PayoutRateCard extends Donut
 HTML
         );
     }
-
 }

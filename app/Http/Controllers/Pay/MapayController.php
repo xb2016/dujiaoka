@@ -1,6 +1,6 @@
 <?php
-namespace App\Http\Controllers\Pay;
 
+namespace App\Http\Controllers\Pay;
 
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class MapayController extends PayController
 {
-
     public function gateway(string $payway, string $orderSN)
     {
         try {
@@ -50,7 +49,6 @@ class MapayController extends PayController
         }
     }
 
-
     public function notifyUrl(Request $request)
     {
         $data = $request->post();
@@ -71,10 +69,4 @@ class MapayController extends PayController
             return 'success';
         }
     }
-
-
-
-
 }
-
-

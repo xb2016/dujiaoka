@@ -7,12 +7,10 @@ use Dcat\Admin\Repositories\EloquentRepository;
 
 class Carmis extends EloquentRepository
 {
-
     /**
      * Model.
      *
      * @var string
      */
     protected $eloquentClass = Model::class;
-
 }

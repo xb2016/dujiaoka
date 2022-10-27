@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Mail;
 
 class MailSend implements ShouldQueue
 {
-
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**

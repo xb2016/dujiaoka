@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
 {
-
     const STATUS_OPEN = 1; // 状态开启
     const STATUS_CLOSE = 0; // 状态关闭
 
@@ -36,5 +35,4 @@ class BaseModel extends Model
             self::STATUS_CLOSE => admin_trans('dujiaoka.status_close')
         ];
     }
-
 }

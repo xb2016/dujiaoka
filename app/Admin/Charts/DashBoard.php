@@ -9,7 +9,6 @@
 
 namespace App\Admin\Charts;
 
-
 use App\Models\Order;
 use Dcat\Admin\Widgets\Metrics\RadialBar;
 use Illuminate\Http\Request;
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class DashBoard extends RadialBar
 {
-
     /**
      * 初始化卡片内容
      */

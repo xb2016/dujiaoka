@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Emailtpl extends Model
 {
-
     use SoftDeletes;
 
     protected $table = 'emailtpls';
-
 }

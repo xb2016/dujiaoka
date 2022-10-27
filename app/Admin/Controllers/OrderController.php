@@ -17,8 +17,6 @@ use App\Models\Order as OrderModel;
 
 class OrderController extends AdminController
 {
-
-
     /**
      * Make a grid builder.
      *

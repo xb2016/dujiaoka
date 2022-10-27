@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Pay;
 
 use App\Exceptions\RuleValidationException;
@@ -7,7 +8,6 @@ use Illuminate\Http\Request;
 
 class YipayController extends PayController
 {
-
     public function gateway(string $payway, string $orderSN)
     {
         try {
@@ -96,5 +96,4 @@ class YipayController extends PayController
         sleep(2);
         return redirect(url('detail-order-sn', ['orderSN' => $oid]));
     }
-
 }

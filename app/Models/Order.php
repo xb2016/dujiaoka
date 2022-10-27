@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'orders';
@@ -60,7 +59,6 @@ class Order extends BaseModel
     protected $dispatchesEvents = [
         'updated' => OrderUpdated::class
     ];
-
 
     /**
      * 状态映射
@@ -142,5 +140,4 @@ class Order extends BaseModel
     {
         return $this->belongsTo(Pay::class, 'pay_id');
     }
-
 }

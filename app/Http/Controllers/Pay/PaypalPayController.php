@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Pay;
 
-
 use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
@@ -23,7 +22,6 @@ use PayPal\Rest\ApiContext;
 
 class PaypalPayController extends PayController
 {
-
     const Currency = 'USD'; //货币单位
 
     public function gateway(string $payway, string $orderSN)
@@ -85,7 +83,7 @@ class PaypalPayController extends PayController
         $orderSN = $request->input('orderSN');
         if ($success == 'no' || empty($paymentId) || empty($payerID)) {
             // 取消支付
-            redirect(url('detail-order-sn', ['orderSN' => $payerID]));
+            return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
         }
         $order = $this->orderService->detailOrderSN($orderSN);
         if (!$order) {
@@ -108,13 +106,12 @@ class PaypalPayController extends PayController
         try {
             $payment->execute($execute, $paypal);
             $this->orderProcessService->completedOrder($orderSN, $order->actual_price, $paymentId);
-            Log::info("paypal支付成功",  ['支付成功，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
+            //Log::info("paypal支付成功",  ['支付成功，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
         } catch (\Exception $e) {
-            Log::error("paypal支付失败", ['支付失败，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
+            //Log::error("paypal支付失败", ['支付失败，支付ID【' . $paymentId . '】,支付人ID【' . $payerID . '】']);
         }
         return redirect(url('detail-order-sn', ['orderSN' => $orderSN]));
     }
-
 
     /**
      * 异步通知
@@ -141,5 +138,4 @@ class PaypalPayController extends PayController
         }
         return $json;
     }
-
 }

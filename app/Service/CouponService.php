@@ -9,12 +9,10 @@
 
 namespace App\Service;
 
-
 use App\Models\Coupon;
 
 class CouponService
 {
-
     /**
      * 获得优惠码，通过商品关联
      *
@@ -76,5 +74,4 @@ class CouponService
     {
         return Coupon::query()->where('id',  $id)->increment('ret', 1);
     }
-
 }

@@ -60,7 +60,6 @@ class OrderUpdated
         }
     }
 
-
     /**
      * 邮件发送
      *

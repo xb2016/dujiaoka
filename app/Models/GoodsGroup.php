@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-
 use App\Events\GoodsGroupDeleted;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GoodsGroup extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'goods_group';
@@ -30,5 +28,4 @@ class GoodsGroup extends BaseModel
     {
         return $this->hasMany(Goods::class, 'group_id');
     }
-
 }

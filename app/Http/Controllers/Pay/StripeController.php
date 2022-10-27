@@ -11,11 +11,8 @@ use URL;
 
 class StripeController extends PayController
 {
-
     public function gateway(string $payway, string $orderSN)
     {
-
-
         // 加载网关
         $this->loadGateWay($orderSN, $payway);
         //构造要请求的参数数组，无需改动
@@ -432,7 +429,6 @@ class StripeController extends PayController
 
     public function returnUrl(Request $request)
     {
-
         $data = $request->all();
         $cacheord = $this->orderService->detailOrderSN($data['orderid']);
         if (!$cacheord) {
@@ -534,6 +530,4 @@ class StripeController extends PayController
         }
         return bcmul($cny , $dfFxrate , 2);
     }
-
-
 }

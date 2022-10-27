@@ -28,7 +28,6 @@
     <div class="card-body">
         <div class="text-center ">
             <img class="avatar img-circle shadow mt-1" src="/vendor/dujiaoka-admin/images/logo.jpg">
-
             <div class="text-center mb-1">
                 <h1 class="mb-3 mt-2 text-white">独角数卡 V{{ config('dujiaoka.dujiaoka_version', '2.0.0') }}</h1>
                 <div class="links">

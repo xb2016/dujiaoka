@@ -1,6 +1,6 @@
 <?php
-namespace App\Http\Controllers\Pay;
 
+namespace App\Http\Controllers\Pay;
 
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class PaysapiController extends PayController
 {
-
     const PAY_URI = 'https://pay.bearsoftware.net.cn/';
 
     public function gateway(string $payway, string $orderSN)
@@ -107,5 +106,4 @@ class PaysapiController extends PayController
         sleep(1);
         return redirect(url('detail-order-sn', ['orderSN' => $oid]));
     }
-
 }

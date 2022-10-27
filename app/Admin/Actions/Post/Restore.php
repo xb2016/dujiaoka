@@ -9,13 +9,11 @@
 
 namespace App\Admin\Actions\Post;
 
-
 use Dcat\Admin\Grid\RowAction;
 use Illuminate\Http\Request;
 
 class Restore extends RowAction
 {
-
     protected $title;
 
     protected $model;
@@ -48,5 +46,4 @@ class Restore extends RowAction
             'model' => $this->model,
         ];
     }
-
 }

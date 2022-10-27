@@ -7,13 +7,11 @@
  * @link      http://utf8.hk/
  */
 
-
 use App\Exceptions\AppException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
-if (! function_exists('replace_mail_tpl')) {
-
+if (!function_exists('replace_mail_tpl')) {
     /**
      * 替换邮件模板
      *
@@ -41,9 +39,7 @@ if (! function_exists('replace_mail_tpl')) {
     }
 }
 
-
-if (! function_exists('dujiaoka_config_get')) {
-
+if (!function_exists('dujiaoka_config_get')) {
     /**
      * 系统配置获取
      *
@@ -62,8 +58,7 @@ if (! function_exists('dujiaoka_config_get')) {
     }
 }
 
-if (! function_exists('format_wholesale_price')) {
-
+if (!function_exists('format_wholesale_price')) {
     /**
      * 格式化批发价
      *
@@ -93,8 +88,7 @@ if (! function_exists('format_wholesale_price')) {
     }
 }
 
-if (! function_exists('delete_html_code')) {
-
+if (!function_exists('delete_html_code')) {
     /**
      * 去除html内容
      * @param string $str 需要去掉的字符串
@@ -113,8 +107,7 @@ if (! function_exists('delete_html_code')) {
     }
 }
 
-if (! function_exists('format_charge_input')) {
-
+if (!function_exists('format_charge_input')) {
     /**
      * 格式化代充框
      *
@@ -144,8 +137,7 @@ if (! function_exists('format_charge_input')) {
     }
 }
 
-if (! function_exists('site_url')) {
-
+if (!function_exists('site_url')) {
     /**
      * 获取顶级域名 带协议
      * @return string
@@ -158,8 +150,7 @@ if (! function_exists('site_url')) {
     }
 }
 
-if (! function_exists('md5_signquery')) {
-
+if (!function_exists('md5_signquery')) {
     function md5_signquery(array $parameter, string $signKey)
     {
         ksort($parameter); //重新排序$data数组
@@ -183,8 +174,7 @@ if (! function_exists('md5_signquery')) {
     }
 }
 
-if (! function_exists('signquery_string')) {
-
+if (!function_exists('signquery_string')) {
     function signquery_string(array $data)
     {
         ksort($data); //排序post参数
@@ -200,7 +190,6 @@ if (! function_exists('signquery_string')) {
 }
 
 if (!function_exists('picture_ulr')) {
-
     /**
      * 生成前台图片链接 不存在使用默认图
      * @param string $file 图片地址

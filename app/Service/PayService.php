@@ -9,12 +9,10 @@
 
 namespace App\Service;
 
-
 use App\Models\Pay;
 
 class PayService
 {
-
     /**
      * 加载支付网关
      *
@@ -71,5 +69,4 @@ class PayService
             ->first();
         return $gateway;
     }
-
 }

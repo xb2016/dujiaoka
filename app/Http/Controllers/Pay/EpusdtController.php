@@ -9,7 +9,6 @@
 
 namespace App\Http\Controllers\Pay;
 
-
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\PayController;
 use GuzzleHttp\Client;
@@ -45,7 +44,6 @@ class EpusdtController extends PayController
             return $this->err($exception->getMessage());
         }
     }
-
 
     private function epusdtSign(array $parameter, string $signKey)
     {
@@ -97,5 +95,4 @@ class EpusdtController extends PayController
         sleep(2);
         return redirect(url('detail-order-sn', ['orderSN' => $oid]));
     }
-
 }

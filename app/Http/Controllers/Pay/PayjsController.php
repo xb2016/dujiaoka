@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Pay;
 
 use App\Exceptions\RuleValidationException;
@@ -6,10 +7,8 @@ use App\Http\Controllers\PayController;
 use Illuminate\Http\Request;
 use Xhat\Payjs\Facades\Payjs;
 
-
 class PayjsController extends PayController
 {
-
     public function gateway(string $payway, string $orderSN)
     {
         try {
@@ -45,7 +44,6 @@ class PayjsController extends PayController
         }
     }
 
-
     public function notifyUrl(Request $request)
     {
         $orderSN = $request->input('out_trade_no');
@@ -63,5 +61,4 @@ class PayjsController extends PayController
         $this->orderProcessService->completedOrder($notify_info['out_trade_no'], $totalFee, $notify_info['payjs_order_id']);
         return 'success';
     }
-
 }

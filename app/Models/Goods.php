@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-
 use App\Events\GoodsDeleted;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Goods extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'goods';
@@ -93,5 +91,4 @@ class Goods extends BaseModel
             self::MANUAL_PROCESSING => admin_trans('goods.fields.manual_processing')
         ];
     }
-
 }

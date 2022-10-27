@@ -17,8 +17,6 @@ use App\Models\Goods as GoodsModel;
 
 class GoodsController extends AdminController
 {
-
-
     /**
      * Make a grid builder.
      *
@@ -92,8 +90,8 @@ class GoodsController extends AdminController
         return Show::make($id, new Goods(), function (Show $show) {
             $show->id('id');
             $show->field('gd_name');
-            $form->field('gd_description');
-            $form->field('gd_keywords');
+            $show->field('gd_description');
+            $show->field('gd_keywords');
             $show->field('picture')->image();
             $show->field('retail_price');
             $show->field('actual_price');
@@ -122,7 +120,7 @@ class GoodsController extends AdminController
             });
             $show->api_hook()->unescape()->as(function ($apiHook) {
                 return  "<textarea class=\"form-control field_wholesale_price_cnf _normal_\"  rows=\"10\" cols=\"30\">" . $apiHook . "</textarea>";
-            });;
+            });
         });
     }
 

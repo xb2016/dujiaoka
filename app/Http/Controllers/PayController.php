@@ -8,13 +8,11 @@ use App\Service\OrderProcessService;
 
 class PayController extends BaseController
 {
-
     /**
      * 支付网关
      * @var \App\Models\Pay
      */
     protected $payGateway;
-
 
     /**
      * 订单
@@ -39,7 +37,6 @@ class PayController extends BaseController
      * @var OrderProcessService
      */
     protected $orderProcessService;
-
 
     public function __construct()
     {
@@ -124,7 +121,5 @@ class PayController extends BaseController
         } catch (RuleValidationException $exception) {
             return $this->err($exception->getMessage());
         }
-
     }
-
 }

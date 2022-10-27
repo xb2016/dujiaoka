@@ -9,7 +9,6 @@
 
 namespace App\Service;
 
-
 use App\Exceptions\RuleValidationException;
 use App\Models\Carmis;
 use App\Models\Goods;
@@ -27,7 +26,6 @@ use App\Models\GoodsGroup;
  */
 class GoodsService
 {
-
     /**
      * 获取所有分类并加载该分类下的商品
      *
@@ -148,5 +146,4 @@ class GoodsService
     {
         return Goods::query()->where('id', $id)->increment('sales_volume', $number);
     }
-
 }

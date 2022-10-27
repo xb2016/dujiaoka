@@ -65,6 +65,7 @@ return [
     'email' => '邮箱',
     'payment_method' => '支付方式',
     'search_password' => '订单查询密码',
+    'search_password_holder' => '随意填写',
     'img_verify_code' => '图形验证码',
     'coupon_code' => '优惠码',
     'copy_text' => '复制',
@@ -90,7 +91,6 @@ return [
     'pay_order_expiration_date_prompt' => '请打开 APP 扫码支付！有效期:min分钟',
     'money_symbol' => '￥',
     'purchase_limit' => '每单限',
-
 
     'prompt' => [
         'server_illegal_request' => '非法请求！',
@@ -124,7 +124,7 @@ return [
         'no_related_order_found_for_cache' => '未找到相关订单缓存！',
         'no_related_order_found' => '未找到相关订单！',
         'new_order_push' => '新订单通知',
-        'loop_carmis_limit' => '此商品最多购买一件！'
+        'loop_carmis_limit' => '此商品最多购买一件！',
     ],
 
     'equipment' => [
@@ -144,6 +144,6 @@ return [
         'home' => '首页',
         'bill' => '订单确认',
         'order-detail' => '订单详情',
-        'order-search' => '订单查询'
-    ]
+        'order-search' => '订单查询',
+    ],
 ];

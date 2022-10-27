@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ImportCarmis extends Form
 {
-
     /**
      * Handle the form request.
      *
@@ -48,10 +47,9 @@ class ImportCarmis extends Form
         Carmis::query()->insert($carmisData);
         // 删除文件
         Storage::disk('public')->delete($input['carmis_txt']);
-        return $this
-				->response()
-				->success(admin_trans('carmis.rule_messages.import_carmis_success'))
-				->location('/carmis');
+        return $this->response()
+                    ->success(admin_trans('carmis.rule_messages.import_carmis_success'))
+                    ->location('/carmis');
     }
 
     /**
@@ -74,5 +72,4 @@ class ImportCarmis extends Form
             ->help(admin_trans('carmis.helps.carmis_list'));
         $this->switch('remove_duplication');
     }
-
 }

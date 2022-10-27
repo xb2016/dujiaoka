@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pay extends BaseModel
 {
-
     use SoftDeletes;
 
     protected $table = 'pays';
@@ -53,5 +52,4 @@ class Pay extends BaseModel
             self::PAY_CLIENT_ALL => admin_trans('pay.fields.pay_client_all'),
         ];
     }
-
 }

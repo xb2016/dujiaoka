@@ -26,43 +26,41 @@ class EmailTest extends Form
      */
     public function handle(array $input)
     {
-      $to = $input['to'];
-      $title = $input['title'];
-      $body = $input['body'];
-      $sysConfig = cache('system-setting');
-      $mailConfig = [
-          'driver' => $sysConfig['driver'] ?? 'stmp',
-          'host' => $sysConfig['host'] ?? '',
-          'port' => $sysConfig['port'] ?? '465',
-          'username' => $sysConfig['username'] ?? '',
-          'from'      =>  [
-              'address'   =>   $sysConfig['from_address'] ?? '',
-              'name'      =>  $sysConfig['from_name'] ?? '独角发卡'
-          ],
-          'password' => $sysConfig['password'] ?? '',
-          'encryption' => $sysConfig['encryption'] ?? 'ssl'
-      ];
-      //  覆盖 mail 配置
-      config([
-          'mail'  =>  array_merge(config('mail'), $mailConfig)
-      ]);
-      // 重新注册驱动
-      (new MailServiceProvider(app()))->register();
-	  try
-	  {
-		  Mail::send(['html' => 'email.mail'], ['body' => $body], function ($message) use ($to, $title){
-			  $message->to($to)->subject($title);
-		  });
-	  }
-	  catch(\Exception $e)
-	  {
-		  return $this
-					->response()
-					->error($e->getMessage());
-	  }
-      return $this
-				->response()
-				->success(admin_trans('email-test.labels.success'));
+        $to = $input['to'];
+        $title = $input['title'];
+        $body = $input['body'];
+        $sysConfig = cache('system-setting');
+        $mailConfig = [
+            'driver' => $sysConfig['driver'] ?? 'stmp',
+            'host' => $sysConfig['host'] ?? '',
+            'port' => $sysConfig['port'] ?? '465',
+            'username' => $sysConfig['username'] ?? '',
+            'from'      =>  [
+                'address'   =>   $sysConfig['from_address'] ?? '',
+                'name'      =>  $sysConfig['from_name'] ?? '独角发卡'
+            ],
+            'password' => $sysConfig['password'] ?? '',
+            'encryption' => $sysConfig['encryption'] ?? 'ssl'
+        ];
+        //  覆盖 mail 配置
+        config([
+            'mail'  =>  array_merge(config('mail'), $mailConfig)
+        ]);
+        // 重新注册驱动
+        (new MailServiceProvider(app()))->register();
+        try
+        {
+            Mail::send(['html' => 'email.mail'], ['body' => $body], function ($message) use ($to, $title){
+                $message->to($to)->subject($title);
+            });
+        }
+        catch(\Exception $e)
+        {
+            return $this->response()
+                        ->error($e->getMessage());
+        }
+        return $this->response()
+                    ->success(admin_trans('email-test.labels.success'));
     }
 
     /**
@@ -79,7 +77,5 @@ class EmailTest extends Form
 
     public function default()
     {
-      
     }
-
 }

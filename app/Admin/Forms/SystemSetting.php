@@ -18,9 +18,8 @@ class SystemSetting extends Form
     public function handle(array $input)
     {
         Cache::put('system-setting', $input);
-        return $this
-				->response()
-				->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
+        return $this->response()
+                    ->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
     }
 
     /**
@@ -98,5 +97,4 @@ class SystemSetting extends Form
     {
         return Cache::get('system-setting');
     }
-
 }

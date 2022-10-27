@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
-
 /**
  * 订单控制器
  *
@@ -23,8 +22,6 @@ use Illuminate\Support\Facades\DB;
  */
 class OrderController extends BaseController
 {
-
-
     /**
      * 订单服务层
      * @var \App\Service\OrderService
@@ -32,8 +29,8 @@ class OrderController extends BaseController
     private $orderService;
 
     /**
-     * 订单处理层.
-     * @var OrderProcessService
+     * 订单处理层
+     * @var \App\Service\OrderProcessService
      */
     private $orderProcessService;
 
@@ -129,7 +126,6 @@ class OrderController extends BaseController
         }
         return $this->render('static_pages/bill', $order, __('dujiaoka.page-title.bill'));
     }
-
 
     /**
      * 订单状态监测
@@ -233,12 +229,14 @@ class OrderController extends BaseController
     public function searchOrderByBrowser(Request $request)
     {
         $cookies = Cookie::get('dujiaoka_orders');
-        if (empty($cookies)) {
-            return $this->err(__('dujiaoka.prompt.no_related_order_found_for_cache'));
+        if (!empty($cookies)) {
+            $orderSNS = json_decode($cookies, true);
+            $orders = $this->orderService->byOrderSNS($orderSNS);
+            if (count($orders) > 0) {
+                return $this->render('static_pages/orderinfo', ['orders' => $orders], __('dujiaoka.page-title.order-detail'));
+            }
         }
-        $orderSNS = json_decode($cookies, true);
-        $orders = $this->orderService->byOrderSNS($orderSNS);
-        return $this->render('static_pages/orderinfo', ['orders' => $orders], __('dujiaoka.page-title.order-detail'));
+        return $this->err(__('dujiaoka.prompt.no_related_order_found_for_cache'));
     }
 
     /**
@@ -255,5 +253,4 @@ class OrderController extends BaseController
     {
         return $this->render('static_pages/searchOrder', [], __('dujiaoka.page-title.order-search'));
     }
-
 }

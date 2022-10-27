@@ -9,12 +9,10 @@
 
 namespace App\Service;
 
-
 use App\Models\Emailtpl;
 
 class EmailtplService
 {
-
     /**
      * 通过邮件标识获得邮件模板
      *
@@ -30,5 +28,4 @@ class EmailtplService
         $tpl = Emailtpl::query()->where('tpl_token', $token)->first();
         return $tpl;
     }
-
 }
