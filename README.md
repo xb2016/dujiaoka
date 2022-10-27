@@ -7,6 +7,14 @@
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
+## 独角数卡修改版
+
+- [x] Unicom 模板无库存商品样式优化
+- [x] 后台样式优化，数据更易读
+- [x] 允许每种商品设置不同的支付方式
+- [x] Cookie 级别未支付订单数限制，防止刷单
+- [x] 增加库存锁，防止多用户同时支付同一件商品时导致的库存不足
+
 ## 独角数卡
 
 开源式站长自动化售货解决方案、高效、稳定、快速！
@@ -33,22 +41,12 @@
 长期技术更新支持！
 
 ## 写在前面
-本程序有一定的上手难度（对于小白而言），需要您对linux服务器有基本的认识和操作度   
-且本程序不支持虚拟主机，大概率也不支持windows服务器！  
+本程序有一定的上手难度（对于小白而言），需要您对服务器有基本的认识和操作度   
+且本程序不支持虚拟主机！  
 如果您连宝塔、phpstudy、AppNode等一键可视化服务器面板也未曾使用或听说过，那么我大概率劝您放弃本程序！  
 如果您觉得部署有难度，建议仔细阅读（仔细！）宝塔视频安装篇教程，里面有保姆级的安装流程和视频教程！   
 认真观看部署教程我可以保证您98%可能性能部署成功！  
 勤动手，多思考，善研究！
-
-## 使用交流      
-Telegram: [https://t.me/dujiaoka](https://t.me/dujiaoka)    
-关注Telegram官方频道：[https://t.me/dujiaoshuka](https://t.me/dujiaoshuka) (系统更新通知，bug更新，重大事件推送)
-
-## 角集-为你的梦想助力(站点推广/商品求购/资源比价等)
-Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)   
-
-## 🔥推荐服务器 
-- （美国免备案vps，配置2核2G仅需`20.98$`≈`145RMB`一年/支持支付宝付款）[👉🏻点我直达](https://my.racknerd.com/aff.php?aff=2745&pid=681)
 
 ## 界面尝鲜
 【官方unicorn模板】
@@ -86,12 +84,10 @@ Telegram官方频道：[https://t.me/dujiaoji](https://t.me/dujiaoji)
 ## 基本环境要求
 
 - (PHP + PHPCLI) version = 7.4
-- Nginx version >= 1.16
 - MYSQL version >= 5.6
 - Redis (高性能缓存服务)
 - Supervisor (一个python编写的进程管理服务)
 - Composer (PHP包管理器)
-- Linux (Win下未测试，建议直接Linux)
 
 ## PHP环境要求
 
