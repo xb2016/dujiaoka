@@ -25,20 +25,18 @@ class GoodsController extends AdminController
     protected function grid()
     {
         return Grid::make(new Goods(['group', 'coupon']), function (Grid $grid) {
-            $grid->model()->orderBy('id', 'DESC');
+            $grid->paginate(30);
+            $grid->model()->orderBy('group.ord', 'DESC')->orderBy('ord', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('picture')->image('', 100, 100);
             $grid->column('gd_name');
-            $grid->column('gd_description');
-            $grid->column('gd_keywords');
-            $grid->column('group.gp_name', admin_trans('goods.fields.group_id'));
+            $grid->column('group.gp_name', admin_trans('goods.fields.group_id'))->sortable();
             $grid->column('type')
                 ->using(GoodsModel::getGoodsTypeMap())
                 ->label([
                     GoodsModel::AUTOMATIC_DELIVERY => Admin::color()->success(),
                     GoodsModel::MANUAL_PROCESSING => Admin::color()->info(),
                 ]);
-            $grid->column('retail_price');
             $grid->column('actual_price')->sortable();
             $grid->column('in_stock')->display(function () {
                 // 如果为自动发货，则加载库存卡密
@@ -54,7 +52,7 @@ class GoodsController extends AdminController
             $grid->column('ord')->editable()->sortable();
             $grid->column('is_open')->switch();
             $grid->column('created_at')->sortable();
-            $grid->column('updated_at');
+            //$grid->column('updated_at');
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
                 $filter->like('gd_name');
@@ -93,11 +91,6 @@ class GoodsController extends AdminController
             $show->field('gd_description');
             $show->field('gd_keywords');
             $show->field('picture')->image();
-            $show->field('retail_price');
-            $show->field('actual_price');
-            $show->field('in_stock');
-            $show->field('ord');
-            $show->field('sales_volume');
             $show->field('type')->as(function ($type) {
                 if ($type == GoodsModel::AUTOMATIC_DELIVERY) {
                     return admin_trans('goods.fields.automatic_delivery');
@@ -105,6 +98,12 @@ class GoodsController extends AdminController
                     return admin_trans('goods.fields.manual_processing');
                 }
             });
+            $show->field('retail_price');
+            $show->field('actual_price');
+            $show->field('in_stock');
+            $show->field('sales_volume');
+            $show->field('buy_limit_num');
+            $show->field('ord');
             $show->field('is_open')->as(function ($isOpen) {
                 if ($isOpen == GoodsGroupModel::STATUS_OPEN) {
                     return admin_trans('dujiaoka.status_open');
@@ -112,11 +111,11 @@ class GoodsController extends AdminController
                     return admin_trans('dujiaoka.status_close');
                 }
             });
-            $show->wholesale_price_cnf()->unescape()->as(function ($wholesalePriceCnf) {
-                return  "<textarea class=\"form-control field_wholesale_price_cnf _normal_\"  rows=\"10\" cols=\"30\">" . $wholesalePriceCnf . "</textarea>";
-            });
             $show->other_ipu_cnf()->unescape()->as(function ($otherIpuCnf) {
                 return  "<textarea class=\"form-control field_wholesale_price_cnf _normal_\"  rows=\"10\" cols=\"30\">" . $otherIpuCnf . "</textarea>";
+            });
+            $show->wholesale_price_cnf()->unescape()->as(function ($wholesalePriceCnf) {
+                return  "<textarea class=\"form-control field_wholesale_price_cnf _normal_\"  rows=\"10\" cols=\"30\">" . $wholesalePriceCnf . "</textarea>";
             });
             $show->api_hook()->unescape()->as(function ($apiHook) {
                 return  "<textarea class=\"form-control field_wholesale_price_cnf _normal_\"  rows=\"10\" cols=\"30\">" . $apiHook . "</textarea>";

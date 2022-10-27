@@ -25,30 +25,31 @@ class OrderController extends AdminController
     protected function grid()
     {
         return Grid::make(new Order(['goods', 'coupon', 'pay']), function (Grid $grid) {
+            $grid->paginate(30);
             $grid->model()->orderBy('id', 'DESC');
+            $grid->fixColumns(1)->height(520);
             $grid->column('id')->sortable();
             $grid->column('order_sn')->copyable();
-            $grid->column('title');
+            $grid->column('goods.gd_name', admin_trans('order.fields.goods_id'));
+            $grid->column('buy_amount');
             $grid->column('type')->using(OrderModel::getTypeMap())
                 ->label([
                     OrderModel::AUTOMATIC_DELIVERY => Admin::color()->success(),
                     OrderModel::MANUAL_PROCESSING => Admin::color()->info(),
                 ]);
             $grid->column('email')->copyable();
-            $grid->column('goods.gd_name', admin_trans('order.fields.goods_id'));
-            $grid->column('goods_price');
-            $grid->column('buy_amount');
+            //$grid->column('goods_price');
+            $grid->column('actual_price');
+            $grid->column('pay.pay_name', admin_trans('order.fields.pay_id'));
+            $grid->column('status')
+                ->select(OrderModel::getStatusMap());
             $grid->column('total_price');
             $grid->column('coupon.coupon', admin_trans('order.fields.coupon_id'));
             $grid->column('coupon_discount_price');
             $grid->column('wholesale_discount_price');
-            $grid->column('actual_price');
-            $grid->column('pay.pay_name', admin_trans('order.fields.pay_id'));
             $grid->column('buy_ip');
-            $grid->column('search_pwd')->copyable();
+            $grid->column('search_pwd')->limit(10);
             $grid->column('trade_no')->copyable();
-            $grid->column('status')
-                ->select(OrderModel::getStatusMap());
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->disableCreateButton();
@@ -56,7 +57,7 @@ class OrderController extends AdminController
                 $filter->equal('order_sn');
                 $filter->like('title');
                 $filter->equal('status')->select(OrderModel::getStatusMap());
-                $filter->equal('email');
+                $filter->like('email');
                 $filter->equal('trade_no');
                 $filter->equal('type')->select(OrderModel::getTypeMap());
                 $filter->equal('goods_id')->select(Goods::query()->pluck('gd_name', 'id'));

@@ -21,6 +21,7 @@ class EmailtplController extends AdminController
     protected function grid()
     {
         return Grid::make(new Emailtpl(), function (Grid $grid) {
+            $grid->paginate(30);
             $grid->column('id')->sortable();
             $grid->column('tpl_name');
             $grid->column('tpl_token');

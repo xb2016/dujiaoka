@@ -23,6 +23,7 @@ class CouponController extends AdminController
     protected function grid()
     {
         return Grid::make(new Coupon(['goods']), function (Grid $grid) {
+            $grid->paginate(30);
             $grid->model()->orderBy('id', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('discount');

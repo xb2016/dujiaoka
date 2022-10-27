@@ -25,6 +25,7 @@ class CarmisController extends AdminController
     protected function grid()
     {
         return Grid::make(new Carmis(['goods']), function (Grid $grid) {
+            $grid->paginate(30);
             $grid->model()->orderBy('id', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('goods.gd_name', admin_trans('carmis.fields.goods_id'));

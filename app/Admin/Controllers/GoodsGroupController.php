@@ -21,13 +21,14 @@ class GoodsGroupController extends AdminController
     protected function grid()
     {
         return Grid::make(new GoodsGroup(), function (Grid $grid) {
-            $grid->model()->orderBy('id', 'DESC');
+            $grid->paginate(30);
+            $grid->model()->orderBy('ord', 'DESC');
             $grid->column('id')->sortable();
             $grid->column('gp_name')->editable();
             $grid->column('is_open')->switch();
-            $grid->column('ord')->editable();
+            $grid->column('ord')->editable()->sortable();
             $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            //$grid->column('updated_at')->sortable();
             $grid->disableViewButton();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
