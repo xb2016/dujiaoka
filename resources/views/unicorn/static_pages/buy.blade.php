@@ -17,14 +17,14 @@
                                     <img src="{{ picture_ulr($picture) }}" class="card-img-top p-3" alt="{{ $gd_name }}">
                                     @if($type == \App\Models\Goods::AUTOMATIC_DELIVERY)
                                         <h6>
-                                            <small class="badge bg-success  position-absolute top-0 start-0">
+                                            <small class="badge bg-success position-absolute top-0 start-0">
                                                 <i class="ali-icon">&#xe7db;</i>
                                                 {{ __('goods.fields.automatic_delivery') }}
                                             </small>
                                         </h6>
                                     @else
                                         <h6>
-                                            <small class="badge bg-warning  position-absolute top-0 start-0">
+                                            <small class="badge bg-warning position-absolute top-0 start-0">
                                                 <i class="ali-icon">&#xe7db;</i>
                                                 {{ __('goods.fields.manual_processing') }}
                                             </small>
@@ -36,16 +36,16 @@
                                         <h3 class="card-title">{{ $gd_name }}</h3>
                                         <h6>
                                             <small class="text-muted">
-                                                {{__('goods.fields.in_stock')}}：{{ $in_stock }}
+                                                {{ __('goods.fields.in_stock') }}: {{ $in_stock }}
                                                 @if(app('Service\OrderService')->pendingOrders($id) > 0)
-                                                    ({{ app('Service\OrderService')->pendingOrders($id) }} {{__('goods.fields.stock_lock')}})
+                                                    ({{ __('goods.fields.stock_lock') }}: {{ app('Service\OrderService')->pendingOrders($id) }})
                                                 @endif
                                             </small>
                                         </h6>
                                         @if($buy_limit_num > 0)
                                             <h6>
                                                 <small class="badge bg-danger">
-                                                    {{__('dujiaoka.purchase_limit')}}({{ $buy_limit_num }})
+                                                    {{ __('dujiaoka.purchase_limit') }} ({{ $buy_limit_num }})
                                                 </small>
                                             </h6>
                                         @endif
@@ -54,7 +54,7 @@
                                                 @foreach($wholesale_price_cnf as $ws)
                                                     <span class="badge bg-dark mt-1 mb-1">
                                                         <i class="ali-icon">&#xe77d;</i>
-                                                        {{ __('dujiaoka.by_amount') }}{{ $ws['number'] }}{{ __('dujiaoka.or_the_above') }},{{ __('dujiaoka.each') }}：{{ $ws['price']  }}{{ __('dujiaoka.money_symbol') }}
+                                                        {{ __('dujiaoka.by_amount') }}{{ $ws['number'] }}{{ __('dujiaoka.or_the_above') }}, {{ __('dujiaoka.each') }}: {{ $ws['price']  }}{{ __('dujiaoka.money_symbol') }}
                                                     </span>
                                                 @endforeach
                                             </div>
@@ -64,11 +64,11 @@
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12">
-                                                        <h6>{{ __('dujiaoka.price') }}：{{ __('dujiaoka.money_symbol') }} {{ $actual_price }}</h6>
+                                                        <h6>{{ __('dujiaoka.price') }}: {{ __('dujiaoka.money_symbol') }} {{ $actual_price }}</h6>
                                                     </div>
                                                     <div class="col-xs-12 col-md-6">
                                                         <input type="hidden" name="gid" value="{{ $id }}">
-                                                        <label for="email" class=" col-form-label">{{ __('dujiaoka.email') }}:</label>
+                                                        <label for="email" class="col-form-label">{{ __('dujiaoka.email') }}:</label>
                                                         <input type="email" class="form-control form-control-sm"
                                                                name="email" id="email" required placeholder="{{ __('dujiaoka.email') }}">
                                                     </div>
@@ -76,35 +76,35 @@
                                                         <label for="shop-number"
                                                                class="col-form-label">{{ __('dujiaoka.by_amount') }}:</label>
                                                         <input type="number" class="form-control form-control-sm"
-                                                               id="shop-number" name="by_amount" placeholder="" min="1" value="1">
+                                                               id="shop-number" name="by_amount" placeholder="" min="1" max="{{ max(1, $in_stock) }}" value="1">
                                                     </div>
                                                     @if(isset($open_coupon))
                                                         <div class="col-xs-12 col-md-6">
                                                             <label for="coupon" class="col-form-label">{{ __('dujiaoka.coupon_code') }}:</label>
                                                             <input type="text"
-                                                                   class=" control form-control form-control-sm"
-                                                                   id="coupon" name="coupon_code"   placeholder="" value="" >
+                                                                   class="control form-control form-control-sm"
+                                                                   id="coupon" name="coupon_code" placeholder="" value="">
                                                         </div>
                                                     @endif
                                                     @if(dujiaoka_config_get('is_open_search_pwd') == \App\Models\Goods::STATUS_OPEN)
                                                         <div class="col-xs-12 col-md-6">
                                                             <label for="search_pwd" class="col-form-label">{{ __('dujiaoka.search_password') }}:</label>
                                                             <input type="text"
-                                                                   class=" control form-control form-control-sm"
-                                                                   id="search_pwd" name="search_pwd" required  placeholder="{{ __('dujiaoka.search_password_holder') }}" value="" >
+                                                                   class="control form-control form-control-sm"
+                                                                   id="search_pwd" name="search_pwd" required placeholder="{{ __('dujiaoka.search_password_holder') }}" value="">
                                                         </div>
                                                     @endif
                                                     @if(dujiaoka_config_get('is_open_img_code') == \App\Models\Goods::STATUS_OPEN)
                                                         <div class="col-12 col-md-6">
-                                                            <label for="verifyCode" class=" col-form-label">{{ __('dujiaoka.img_verify_code') }}:</label>
+                                                            <label for="verifyCode" class="col-form-label">{{ __('dujiaoka.img_verify_code') }}:</label>
                                                             <div class="input-group">
                                                                 <input type="text" name="img_verify_code" class="form-control form-control-sm"
                                                                        id="verifyCode" required placeholder="">
                                                                 <img style="margin-left: 10px;" src="{{ captcha_src('buy') . time() }}"
-                                                                     height="33px" alt="{{ __('dujiaoka.img_verify_code') }}"  onclick="refresh()" id="imageCode">
+                                                                     height="33px" alt="{{ __('dujiaoka.img_verify_code') }}" onclick="refresh()" id="imageCode">
                                                                 <script>
-                                                                    function refresh(){
-                                                                        $('#imageCode').attr('src','{{ captcha_src('buy') }}'+Math.random());
+                                                                    function refresh() {
+                                                                        $('#imageCode').attr('src', '{{ captcha_src('buy') }}' + Math.random());
                                                                     }
                                                                 </script>
                                                             </div>
@@ -117,13 +117,13 @@
                                                             <div class="col-xs-12 col-md-6">
                                                                 <label for="{{ $ipu['field'] }}" class="col-form-label">{{ $ipu['desc'] }}:</label>
                                                                 <input type="text"
-                                                                       class=" control form-control form-control-sm"
-                                                                       id="{{ $ipu['field'] }}" name="{{ $ipu['field'] }}"  @if($ipu['rule'] !== false) required @endif placeholder="{{ $ipu['desc'] }}">
+                                                                       class="control form-control form-control-sm"
+                                                                       id="{{ $ipu['field'] }}" name="{{ $ipu['field'] }}" @if($ipu['rule'] !== false) required @endif placeholder="{{ $ipu['desc'] }}">
                                                             </div>
                                                         @endforeach
                                                     @endif
                                                     <div class="col-12">
-                                                        <label for="coupon" class="col-form-label">{{ __('dujiaoka.payment_method') }}：</label>
+                                                        <label for="coupon" class="col-form-label">{{ __('dujiaoka.payment_method') }}:</label>
                                                         <fieldset>
                                                             @foreach($payways as $index => $way)
                                                                 <div class="form-check form-check-inline">

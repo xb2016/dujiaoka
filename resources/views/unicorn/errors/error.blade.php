@@ -20,9 +20,9 @@
                                     </div>
                                     <div class="col-12 mt-3 text-center">
                                         @if(!$url)
-                                            <a href="javascript:history.back(-1);"  class="btn btn-outline-dark">{{ __('dujiaoka.callback') }}</a>
+                                            <a href="javascript:history.back(-1);" class="btn btn-outline-dark">{{ __('dujiaoka.callback') }}</a>
                                         @else
-                                            <a href="{{ $url }}"  class="btn btn-outline-dark">{{ __('dujiaoka.callback') }}</a>
+                                            <a href="{{ $url }}" class="btn btn-outline-dark">{{ __('dujiaoka.callback') }}</a>
                                         @endif
                                     </div>
                                 </div>

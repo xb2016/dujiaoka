@@ -10,7 +10,7 @@
                             <div class="card-body p-4 text-center">
                                 <h3 class="card-title text-primary">{{ __('dujiaoka.scan_qrcode_to_pay') }}</h3>
                                 <h6>
-                                    <small class="text-muted">{{ __('dujiaoka.payment_method') }}：[{{ $payname }}], {{ __('dujiaoka.pay_order_expiration_date_prompt', ['min' => dujiaoka_config_get('order_expire_time', 5)]) }}</small>
+                                    <small class="text-muted">{{ __('dujiaoka.payment_method') }}: [{{ $payname }}], {{ __('dujiaoka.pay_order_expiration_date_prompt', ['min' => dujiaoka_config_get('order_expire_time', 5)]) }}</small>
                                 </h6>
                                 <div class="err-messagep-3">
                                     <img src="data:image/png;base64,{!! base64_encode(QrCode::format('png')->size(200)->generate($qr_code)) !!}" alt="{{ __('dujiaoka.scan_qrcode_to_pay') }}" srcset="">
@@ -20,7 +20,8 @@
                                 </h6>
                                 @if(Agent::isMobile() && isset($jump_payuri))
                                     <a href="{{ $jump_payuri }}" type="button" class="btn btn-dark">
-                                        {{ __('dujiaoka.open_the_app_to_pay') }}</a>
+                                        {{ __('dujiaoka.open_the_app_to_pay') }}
+                                    </a>
                                 @endif
                             </div>
                         </div>

@@ -2,13 +2,19 @@
 
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license MIT"></a>
-<a href="https://github.com/assimon/dujiaoka/releases/tag/2.0.4"><img src="https://img.shields.io/badge/version-2.0.4-red" alt="version 2.0.4"></a>
+<a href="https://github.com/assimon/dujiaoka/releases/tag/2.0.5"><img src="https://img.shields.io/badge/version-2.0.5-red" alt="version 2.0.5"></a>
 <a href="https://www.php.net/releases/7_4_0.php"><img src="https://img.shields.io/badge/PHP-7.4-lightgrey" alt="php74"></a>
-<a href="https://shang.qq.com/wpa/qunwpa?idkey=37b6b06f7c941dae20dcd5784088905d6461064d7f33478692f0c4215546cee0"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-568679748-green" alt="QQ群：568679748"></a>
 </p>
 
-## 独角数卡修改版
+## 独角数卡修改版 - 基于 V2.0.5
 
+- [x] 格式化代码，统一格式
+- [x] 添加缺失的繁体翻译
+- [x] 修复 IIS 重写规则，确认本程序支持 Windows
+- [x] 修复商品删除后，访问商品链接出现 500 错误
+- [x] 修复管理员清理订单记录后，浏览器订单查询页面空白
+- [x] 修复 PayPal 取消支付后跳转链接错误
+- [x] Unicom 模板添加谷歌翻译
 - [x] Unicom 模板无库存商品样式优化
 - [x] 后台样式优化，数据更易读
 - [x] 允许每种商品设置不同的支付方式

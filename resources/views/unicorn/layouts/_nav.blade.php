@@ -15,7 +15,7 @@
                 <div class="header-right clearfix">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
-                            <a class="navbar-brand@if(dujiaoka_config_get('img_logo')) d-md-none d-block@endif" href="/">{{ dujiaoka_config_get('text_logo') }}</a>
+                            <a class="navbar-brand @if(dujiaoka_config_get('img_logo')) d-md-none d-block @endif" href="/">{{ dujiaoka_config_get('text_logo') }}</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false"
                                     aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                             <div class="collapse navbar-collapse" id="navbarColor">
                                 <ul class="navbar-nav me-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link @if(\Illuminate\Support\Facades\Request::path() == '/') active @endif " href="/">{{__('dujiaoka.home_page')}}</a>
+                                        <a class="nav-link @if(\Illuminate\Support\Facades\Request::path() == '/') active @endif" href="/">{{ __('dujiaoka.home_page') }}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link @if(\Illuminate\Support\Facades\Request::url() == url('order-search')) active @endif" href="{{ url('order-search') }}">{{ __('dujiaoka.order_search') }}</a>
