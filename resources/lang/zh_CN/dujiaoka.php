@@ -67,6 +67,7 @@ return [
     'search_password' => '订单查询密码',
     'search_password_holder' => '随意填写',
     'img_verify_code' => '图形验证码',
+    'img_verify_code_refresh' => '点击刷新',
     'coupon_code' => '优惠码',
     'copy_text' => '复制',
     'search_goods_name' => '商品名称...',

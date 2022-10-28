@@ -8,7 +8,7 @@
                         <div class="card-body">
                             <div class="jumbotron jumbotron-fluid p-1">
                                 <div class="container">
-                                    <h4 class="">{{ __('dujiaoka.site_announcement') }}：</h4>
+                                    <h4 class="">{{ __('dujiaoka.site_announcement') }}:</h4>
                                     <div>{!! dujiaoka_config_get('notice') !!}</div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="category-menus">
-                            <ul class="nav nav-pills  justify-content-center">
+                            <ul class="nav nav-pills justify-content-center">
                                 <li class="nav-item">
                                     <a href="#group-all" data-bs-toggle="tab" class="btn btn-outline-secondary active">{{ __('dujiaoka.group_all') }}</a>
                                 </li>
@@ -97,8 +97,10 @@
                                                             {{ __('dujiaoka.home_discount') }}
                                                         </button>
                                                     @endif
-                                                    <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
-                                                    @if ($goods['in_stock'] > 0)
+                                                    <h6 class="mt-2">
+                                                        <small class="text-muted">{{ __('goods.fields.in_stock') }}: {{ $goods['in_stock'] }}</small>
+                                                    </h6>
+                                                    @if($goods['in_stock'] > 0)
                                                         <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
                                                     @else
                                                         <a href="javascript:void(0);" class="btn btn-primary disabled fr">
@@ -150,8 +152,10 @@
                                                             {{ __('dujiaoka.home_discount') }}
                                                         </button>
                                                     @endif
-                                                    <h6 class="mt-2"><small class="text-muted">{{__('goods.fields.in_stock')}}：{{ $goods['in_stock'] }}</small></h6>
-                                                    @if ($goods['in_stock'] > 0)
+                                                    <h6 class="mt-2">
+                                                        <small class="text-muted">{{ __('goods.fields.in_stock') }}: {{ $goods['in_stock'] }}</small>
+                                                    </h6>
+                                                    @if($goods['in_stock'] > 0)
                                                         <a href="{{ url("/buy/{$goods['id']}") }}" class="btn btn-primary fr">
                                                     @else
                                                         <a href="javascript:void(0);" class="btn btn-primary disabled fr">
@@ -181,7 +185,7 @@
         //var search_content = search_content.toLowerCase();
         if ($.trim(search_content) != "") {
             //console.log($.trim(search_content));
-            $(".col").hide().filter(":contains('"+search_content+"')").show();
+            $(".col").hide().filter(":contains('" + search_content + "')").show();
         } else {
             $(".col").show();
         }

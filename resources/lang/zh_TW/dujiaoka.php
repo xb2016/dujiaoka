@@ -67,6 +67,7 @@ return [
     'search_password' => '訂單查詢密碼',
     'search_password_holder' => '隨意填寫',
     'img_verify_code' => '圖形驗證碼',
+    'img_verify_code_refresh' => '點擊刷新',
     'coupon_code' => '折扣碼',
     'copy_text' => '復製',
     'search_goods_name' => '商品名稱...',

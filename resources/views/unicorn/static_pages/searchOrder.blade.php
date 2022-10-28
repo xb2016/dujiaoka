@@ -26,13 +26,13 @@
                                     </ul>
                                     <div id="searchTabContent" class="tab-content">
                                         <div class="tab-pane fade active show" id="order_search_by_sn">
-                                            <form action="{{ url('search-order-by-sn') }}" method="post" >
+                                            <form action="{{ url('search-order-by-sn') }}" method="post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12 col-md-8">
                                                         <label for="orderSN" class="col-form-label">{{ __('order.fields.order_sn') }}:</label>
                                                         <input type="text" class="form-control form-control-sm"
-                                                               id="orderSN"  name="order_sn" required placeholder="{{ __('order.fields.order_sn') }}">
+                                                               id="orderSN" name="order_sn" required placeholder="{{ __('order.fields.order_sn') }}">
                                                     </div>
                                                     <div class="col-12 mt-3">
                                                         <button type="submit" class="btn btn-outline-primary">
@@ -44,7 +44,7 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="order_search_by_email">
-                                            <form  action="{{ url('search-order-by-email') }}" method="post">
+                                            <form action="{{ url('search-order-by-email') }}" method="post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12 col-md-8">
@@ -69,7 +69,7 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="order_search_by_browser">
-                                            <form  action="{{ url('search-order-by-browser') }}"  method="post">
+                                            <form action="{{ url('search-order-by-browser') }}" method="post">
                                                 {{ csrf_field() }}
                                                 <div class="form-group row">
                                                     <div class="col-12 mt-3">

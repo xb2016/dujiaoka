@@ -70,7 +70,7 @@
                                             <span
                                                 class="small-tips tips-yellow">{{ __('goods.fields.manual_processing') }}</span>
                                         @endif
-                                        <span class="small-tips tips-blue">{{__('goods.fields.in_stock')}}({{ $in_stock }}@if(app('Service\OrderService')->pendingOrders($id) > 0), {{ app('Service\OrderService')->pendingOrders($id) }} {{__('goods.fields.stock_lock')}})@endif</span>
+                                        <span class="small-tips tips-blue">{{__('goods.fields.in_stock')}}({{ $in_stock - app('Service\OrderService')->pendingOrders($id) }}/{{ $in_stock }})</span>
                                         @if($buy_limit_num > 0)
                                             <span class="small-tips tips-red"> {{__('dujiaoka.purchase_limit')}}({{ $buy_limit_num }})</span>
                                         @endif

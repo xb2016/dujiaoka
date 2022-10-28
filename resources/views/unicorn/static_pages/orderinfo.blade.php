@@ -13,25 +13,26 @@
                                         <div class="card card-body p-3 border-0">
                                             <div class="mx-auto">
                                                 <h5>
-                                                    <small class="text-muted">{{ __('order.fields.order_sn') }}：{{ $order['order_sn'] }}</small>
+                                                    <small class="text-muted">{{ __('order.fields.order_sn') }}: {{ $order['order_sn'] }}</small>
                                                 </h5>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.title') }}：</label>
+                                                    <label>{{ __('order.fields.title') }}:</label>
                                                     <span>{{ $order['title'] }}</span>
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.buy_amount') }}：</label>
+                                                    <label>{{ __('order.fields.buy_amount') }}:</label>
                                                     <span>{{ $order['buy_amount'] }}</span>
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.order_created') }}：</label>
+                                                    <label>{{ __('order.fields.order_created') }}:</label>
                                                     <span>{{ $order['created_at'] }}</span>
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.email') }}：</label>
-                                                    <span>{{ $order['email'] }}</span></div>
+                                                    <label>{{ __('order.fields.email') }}:</label>
+                                                    <span>{{ $order['email'] }}</span>
+                                                </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.type') }}：</label>
+                                                    <label>{{ __('order.fields.type') }}:</label>
                                                     @if($order['type'] == \App\Models\Order::AUTOMATIC_DELIVERY)
                                                         <span class="badge bg-success">{{ __('goods.fields.automatic_delivery') }}</span>
                                                     @else
@@ -39,17 +40,17 @@
                                                     @endif
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.actual_price') }}：</label>
+                                                    <label>{{ __('order.fields.actual_price') }}:</label>
                                                     <span>{{ $order['actual_price'] }}</span>
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('order.fields.status') }}：</label>
+                                                    <label>{{ __('order.fields.status') }}:</label>
                                                     @switch($order['status'])
                                                         @case(\App\Models\Order::STATUS_EXPIRED)
                                                         <span class="badge bg-dark">{{ __('order.fields.status_expired') }}</span>
                                                         @break
                                                         @case(\App\Models\Order::STATUS_WAIT_PAY)
-                                                        <a href="{{url('/bill', ['orderSN' => $order['order_sn']])}}">
+                                                        <a href="{{ url('/bill', ['orderSN' => $order['order_sn']]) }}">
                                                             <span class="badge bg-secondary">{{ __('order.fields.status_wait_pay') }}</span>
                                                         </a>
                                                         @break
@@ -71,8 +72,8 @@
                                                     @endswitch
                                                 </div>
                                                 <div class="mb-1">
-                                                    <label>{{ __('dujiaoka.payment_method') }}：</label>
-                                                    <span>{{ $order['pay']['pay_name'] ?? ''  }}</span>
+                                                    <label>{{ __('dujiaoka.payment_method') }}:</label>
+                                                    <span>{{ $order['pay']['pay_name'] ?? '' }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,12 +100,12 @@
 @section('js')
 <script src="/assets/unicorn/js/clipboard.min.js"></script>
 <script>
-    var clipboard = new ClipboardJS("#copy-card")
+    var clipboard = new ClipboardJS("#copy-card");
     clipboard.on('success', function(e) {
-       alert("{{ __('dujiaoka.prompt.copy_text_success') }}")
+       alert("{{ __('dujiaoka.prompt.copy_text_success') }}");
     });
     clipboard.on('error', function(e) {
-        alert("{{ __('dujiaoka.prompt.copy_text_failed') }}")
+        alert("{{ __('dujiaoka.prompt.copy_text_failed') }}");
     });
 </script>
 @stop
