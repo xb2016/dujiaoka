@@ -129,7 +129,8 @@ class OrderService
             throw new RuleValidationException(__('dujiaoka.prompt.inventory_shortage'));
         }
         // 支付方式
-        if ($goods->payment_limit && !in_array($request->input('payway'), explode(',', $goods->payment_limit))) {
+        $paymentLimit = json_decode($goods->payment_limit, true);
+        if (!empty($paymentLimit) && !in_array($request->input('payway'), $paymentLimit)) {
             throw new RuleValidationException(__('dujiaoka.prompt.server_illegal_request'));
         }
         // 库存锁

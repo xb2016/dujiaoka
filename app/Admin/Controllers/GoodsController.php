@@ -7,13 +7,14 @@ use App\Admin\Actions\Post\Restore;
 use App\Admin\Repositories\Goods;
 use App\Models\Carmis;
 use App\Models\Coupon;
+use App\Models\Goods as GoodsModel;
 use App\Models\GoodsGroup as GoodsGroupModel;
+use App\Models\Pay as PayModel;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
-use App\Models\Goods as GoodsModel;
 
 class GoodsController extends AdminController
 {
@@ -146,7 +147,9 @@ class GoodsController extends AdminController
             $form->number('in_stock')->help(admin_trans('goods.helps.in_stock'));
             $form->number('sales_volume');
             $form->number('buy_limit_num')->help(admin_trans('goods.helps.buy_limit_num'));
-            $form->text('payment_limit')->rules('nullable|regex:/^([0-9]{1,2},)*[0-9]{1,2}$/')->help(admin_trans('goods.helps.payment_limit'));
+            $form->multipleSelect('payment_limit')->options(
+                PayModel::query()->where('is_open', PayModel::STATUS_OPEN)->pluck('pay_name', 'id')
+            )->help(admin_trans('goods.helps.payment_limit'));
             $form->editor('buy_prompt');
             $form->editor('description');
             $form->textarea('other_ipu_cnf')->help(admin_trans('goods.helps.other_ipu_cnf'));

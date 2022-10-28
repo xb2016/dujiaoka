@@ -78,13 +78,13 @@ class HomeController extends BaseController
                 $client = Pay::PAY_CLIENT_MOBILE;
             }
             $payways = $this->payService->pays($client);
-            $customPayways = [];
-            if ($formatGoods->payment_limit) {
+            $paymentLimit = json_decode($formatGoods->payment_limit, true);
+            if (!empty($paymentLimit)) {
                 foreach ($payways as $way) {
-                    if (in_array($way['id'], explode(',', $formatGoods->payment_limit))) $customPayways[] = $way;
+                    if (in_array($way['id'], $paymentLimit)) $customPayways[] = $way;
                 }
             }
-            $formatGoods->payways = empty($customPayways) ? $payways : $customPayways;
+            $formatGoods->payways = $customPayways ?? $payways;
             return $this->render('static_pages/buy', $formatGoods, $formatGoods->gd_name);
         } catch (RuleValidationException $ruleValidationException) {
             return $this->err($ruleValidationException->getMessage());
